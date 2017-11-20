@@ -8,7 +8,7 @@
   win_regedit: 
     key: HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\ValidCommunities
     name: H3T5nm9R3@d!
-    value: 4
+    data: 4
     type: dword
     state: present
   notify: restart snmp
@@ -16,8 +16,8 @@
 - name: Add permitted managers
   win_regedit:
     key: HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\PermittedManagers
-    name: "[[ item.0 }}"
-    value: "{{ item }}"
+    name: "{{ item.0 }}"
+    data: "{{ item.1 }}"
     state: present
   with_indexed_items: 
     - 10.70.0.37
