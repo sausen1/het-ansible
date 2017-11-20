@@ -1,0 +1,11 @@
+- name: Demo Playbook
+  hosts: Windows
+  vars: 
+    ansible_port: 5986
+    ansible_connection: winrm
+    ansible_winrm_server_cert_validation: ignore
+    ansible_winrm_transport: credssp
+    ansible_winrm_kerberos_delegation: yes
+  tasks:
+    - name: Ping test
+      win_ping: 
