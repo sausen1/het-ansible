@@ -1,0 +1,31 @@
+- name: Check for SNMP
+  win_feature:
+    name: SNMP-service
+    state: present
+  notify: restart snmp
+
+- name: Add community name
+  win_regedit: 
+    key: HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\ValidCommunities
+    name: H3T5nm9R3@d!
+    value: 4
+    state: present
+  notify: restart snmp
+
+- name: Add permitted managers
+  win_regedit:
+    key: HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\PermittedManagers
+    name: "[[ item.0 }}"
+    value: "{{ item }}"
+    state: present
+  with_items: 
+    - 10.70.0.37
+    - 10.72.0.37
+    - 10.217.33.29
+    - 10.196.8.137
+    - 10.72.0.91
+    - 10.72.0.92
+    - 10.72.0.94
+    - 10.72.0.95
+  notify: restart snmp
+

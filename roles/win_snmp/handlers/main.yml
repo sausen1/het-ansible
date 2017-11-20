@@ -1,0 +1,5 @@
+- name: restart snmp
+  win_service: 
+    name: SNMP
+    state: restarted
+
