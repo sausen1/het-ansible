@@ -7,5 +7,6 @@
     ansible_winrm_transport: credssp
     ansible_winrm_kerberos_delegation: yes
   tasks:
-    - name: Ping test
-      win_ping: 
+    - name: Install Windows Updates
+      win_updates: 
+        category_names: "{{ catagories }}" 
