@@ -9,6 +9,7 @@
     key: HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\ValidCommunities
     name: H3T5nm9R3@d!
     value: 4
+    type: dword
     state: present
   notify: restart snmp
 
@@ -18,7 +19,7 @@
     name: "[[ item.0 }}"
     value: "{{ item }}"
     state: present
-  with_items: 
+  with_indexed_items: 
     - 10.70.0.37
     - 10.72.0.37
     - 10.217.33.29
