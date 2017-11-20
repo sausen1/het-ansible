@@ -6,14 +6,5 @@
     ansible_winrm_server_cert_validation: ignore
     ansible_winrm_transport: credssp
     ansible_winrm_kerberos_delegation: yes
-  tasks:
-    - name: Install Windows Updates
-      win_updates: 
-        category_names: "{{ catagories }}"
-      register: winup
-
-    - name: Reboot if neccesary
-      win_reboot:
-        shutdown_timeout_sec: 3600
-        reboot_timeout_sec: 3600
-      when: winup.reboot_required 
+  roles:
+    - win_updates
