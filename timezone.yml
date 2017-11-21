@@ -1,0 +1,12 @@
+- name: Verify Timezone 
+  hosts: all 
+  vars: 
+    ansible_port: 5986
+    ansible_connection: winrm
+    ansible_winrm_server_cert_validation: ignore
+    ansible_winrm_transport: credssp
+    ansible_winrm_kerberos_delegation: yes
+  tasks:
+    - name: Set Timezone
+      win_timezone: 
+        timezone: "{{ timezone }}"
