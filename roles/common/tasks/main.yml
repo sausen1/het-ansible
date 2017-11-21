@@ -14,7 +14,7 @@
 - name: Defrag harddrive
   win_defrag:
     freespace_consolidation: yes
-    parallel: yes
+    parallel: no 
     priority: normal
 
 - name: Set pagefile size
