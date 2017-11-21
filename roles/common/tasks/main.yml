@@ -1,3 +1,31 @@
+- name: Set pagefile size
+  win_pagefile:
+    initial_size: 0
+    maximum_size: 0
+    drive: C
+    override: yes
+    state: present
+  register: setpagefile
+
+- name: Reboot to reset Pagefile to zero
+  win_reboot:
+  when: setpagefile.changed
+
+- name: Defrag harddrive
+  win_defrag:
+    freespace_consolidation: yes
+    parallel: yes
+    priority: normal
+
+- name: Set pagefile size
+  win_pagefile:
+    initial_size: "{{ ansible_memtotal_mb | int * 1.5 }}"
+    maximum_size: "{{ ansible_memtotal_mb | int * 1.5 }}"
+    drive: C
+    override: yes
+    state: present
+  notify: restart pc
+
 - name: Rename Computer
   win_domain_membership: 
     hostname: "{{ inventory_hostname }}"
@@ -5,16 +33,5 @@
     workgroup_name: workgroup
     domain_admin_user: "{{ ansible_user }}"
     domain_admin_password: "{{ ansible_ssh_pass }}"
-  register: rename
+  notify: restart pc
 
-- name: Reboot if neccesary
-  win_reboot:
-  when: rename.reboot_required
-
-- name: Set pagefile size
-  win_pagefile: 
-    initial_size: "{{ ansible_memtotal_mb | int * 1.5 }}"  
-    maximum_size: "{{ ansible_memtotal_mb | int * 1.5 }}" 
-    drive: C
-    override: yes
-    state: present
