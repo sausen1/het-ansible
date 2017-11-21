@@ -8,3 +8,4 @@
     ansible_winrm_kerberos_delegation: yes
   roles:
     - win_snmp
+    - dotnet

@@ -1,0 +1,5 @@
+- name: Install .Net 3.5
+  win_feature:
+    name: AS-NET-Framework
+    state: present
+
