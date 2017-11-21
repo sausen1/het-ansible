@@ -1,3 +1,9 @@
+- name: Set DNS servers
+  win_dns_client:
+    adapter_names: "*"
+    ipv4_addresses: 
+      - "{{ dns_servers[location] }}"
+
 - name: Set pagefile size
   win_pagefile:
     initial_size: 0
