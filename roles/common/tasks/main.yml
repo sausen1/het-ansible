@@ -1,6 +1,6 @@
 - name: Set Timezone
-    win_timezone:
-      timezone: "{{ timezones[location] }}"
+  win_timezone:
+    timezone: "{{ timezones[location] }}"
 
 - name: Set DNS servers
   win_dns_client:
