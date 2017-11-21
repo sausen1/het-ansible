@@ -7,5 +7,4 @@
     ansible_winrm_transport: credssp
     ansible_winrm_kerberos_delegation: yes
   roles:
-    - win_snmp
-    - dotnet
+    - common

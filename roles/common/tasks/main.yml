@@ -1,0 +1,10 @@
+- name: Rename Computer
+  win_domain_membership: 
+    hostname: "{{ inventory_hostname }}"
+    state: workgroup
+    domain_admin_user: "{{ ansible_user }}"
+  register: rename
+
+- name: Reboot if neccesary
+  win_reboot:
+  when: rename.reboot_required
