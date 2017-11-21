@@ -1,6 +1,8 @@
 - name: Rename Computer
   win_domain_membership: 
     hostname: "{{ inventory_hostname }}"
+    state: workgroup
+    workgroup_name: workgroup
     domain_admin_user: "{{ ansible_user }}"
     domain_admin_password: "{{ ansible_ssh_pass }}"
   register: rename
