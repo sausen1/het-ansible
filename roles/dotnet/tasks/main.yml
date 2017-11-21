@@ -1,5 +1,5 @@
 - name: Install .Net 3.5
   win_feature:
-    name: AS-NET-Framework
+    name: NET-Framework-Core
     state: present
 
