@@ -1,0 +1,7 @@
+- name: Copy Server Support Directory
+  win_copy:
+    src: \\Sctermsrv01\d$\Server Support-DLM
+    dest: C:\serversupport
+    remote_src: yes
+    force: no
+
