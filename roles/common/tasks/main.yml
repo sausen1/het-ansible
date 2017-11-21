@@ -3,6 +3,7 @@
     hostname: "{{ inventory_hostname }}"
     state: workgroup
     domain_admin_user: "{{ ansible_user }}"
+    domain_admin_password: "{{ ansible_ssh_pass }}"
   register: rename
 
 - name: Reboot if neccesary
