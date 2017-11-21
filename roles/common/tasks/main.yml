@@ -10,3 +10,11 @@
 - name: Reboot if neccesary
   win_reboot:
   when: rename.reboot_required
+
+- name: Set pagefile size
+  win_pagefile: 
+    initial_size: "{{ ansible_memtotal_mb }}" * 1.5 
+    maximum_size: "{{ ansible_memtotal_mb }}" * 1.5
+    drive: C
+    override: yes
+    state: present
