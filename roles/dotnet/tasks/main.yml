@@ -1,8 +1,12 @@
-- name: Install .Net 3.5
+- name: Install .Net 3.5 on 2016
   win_feature:
     name: NET-Framework-Core
     state: present
-  
-- debug:
-    var: ansible_distribution_version
+  when: ansible_distribution_major_version == "10"
 
+- name: Install .Net 3.5 on 2012
+  win_feature:
+    name: NET-Framework
+    state: present
+  when: ansible_distribution_major_version == "6"
+ 
