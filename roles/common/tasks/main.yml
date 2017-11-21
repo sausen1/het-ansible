@@ -1,8 +1,13 @@
+- name: Set Timezone
+    win_timezone:
+      timezone: "{{ timezones[location] }}"
+
 - name: Set DNS servers
   win_dns_client:
     adapter_names: "*"
     ipv4_addresses: 
       - "{{ dns_servers[location] }}"
+  when: dns_servers[location] is defined  
 
 - name: Set pagefile size
   win_pagefile:

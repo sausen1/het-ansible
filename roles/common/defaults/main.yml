@@ -13,9 +13,6 @@ dns_servers:
   AWSWest:
     - 10.212.32.227
     - 10.212.32.228
-  Azure:
-    - 10.67.32.12
-    - 10.67.32.13
   IND:
     - 172.28.34.153
     - 172.28.48.117
@@ -24,4 +21,16 @@ dns_servers:
     - 10.171.1.80
   HOU:
     - 10.90.4.11
-    - 10.90.4.13  
+    - 10.90.4.13
+
+timezones:
+  DC4: Eastern Standard Time
+  SC9: Pacific Standard Time
+  AWSEast: Eastern Standard Time
+  AWSWest: Pacific Standard Time
+  AzureEast: Eastern Standard Time
+  AzureWest: Pacific Standard Time
+  IND: Central Standard Time
+  NYC: Eastern Standard Time
+  HOU: Central Standard Time
+
