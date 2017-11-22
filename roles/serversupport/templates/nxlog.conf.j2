@@ -1,0 +1,49 @@
+## This is a sample configuration file. See the nxlog reference manual about the
+## configuration options. It should be installed locally and is also available
+## online at http://nxlog.org/docs/
+
+## Please set the ROOT to the folder your nxlog was installed into,
+## otherwise it will not start.
+## DLM 2-14-17
+
+
+define ROOT C:\Program Files (x86)\nxlog
+
+Moduledir %ROOT%\modules
+CacheDir %ROOT%\data
+Pidfile %ROOT%\data\nxlog.pid
+SpoolDir %ROOT%\data
+LogFile %ROOT%\data\nxlog.log
+
+<Extension _syslog>
+    Module      xm_syslog
+</Extension>
+
+<Input in>
+    Module       im_msvistalog
+    ReadFromLast TRUE
+    <QueryXML>
+       <QueryList>
+         <Query Id='1'>
+	   <Select Path='Application'>*</Select>
+           <Select Path='Security'>*[Security/Level=4]</Select>
+	   <Select Path='System'>*</Select>
+         </Query>
+       </QueryList>
+   </QueryXML>
+</Input>
+
+<Output out>
+    Module      om_udp
+    # this is the US syslog server
+    Host        het001stropk006.hearst.com
+    Port        514
+    # We want windows logs to local2 on the remote so...
+    Exec        $SyslogFacility = 'local2';
+    Exec        to_syslog_ietf();
+</Output>
+
+<Route 1>
+    Path        in => out
+</Route>
+

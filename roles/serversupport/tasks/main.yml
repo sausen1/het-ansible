@@ -20,4 +20,10 @@
     arguments: /qr
     state: present
     creates_path: C:\program files (x86)\nxlog
+
+- name: Update nxlog conf file
+  win_template:
+    src: templates/nxlog.conf.j2
+    dest: C:\program files (x86)\nxlog\nxlog.conf
+  notify: restart nxlog
   
