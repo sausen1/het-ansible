@@ -27,6 +27,13 @@
     dest: C:\program files (x86)\nxlog\nxlog.conf
   notify: restart nxlog
 
+- name: Install Evault software
+  win_package:
+    path: C:\Support\Evault\latest_Win_64bit\Agent-Windows-x64-8-31-7896.exe
+    product_id: auto
+    arguments: /s
+    state: present
+
 - name: Install SEP
   win_package:
     path: C:\support\Sep Server Installs\x64\setup.exe
