@@ -29,8 +29,8 @@
 
 - name: Install SEP
   win_package:
-  path: C:\support\Sep Server Installs\x64\setup.exe
-  product_id: auto
-  arguments: /s
-  state: present
+    path: C:\support\Sep Server Installs\x64\setup.exe
+    product_id: auto
+    arguments: /s
+    state: present
   
