@@ -33,6 +33,7 @@
     product_id: auto
     arguments: /s
     state: present
+    creates_path: C:\Program Files\EVault Software
 
 - name: Install SEP
   win_package:
@@ -40,4 +41,5 @@
     product_id: auto
     arguments: /s
     state: present
+    creates_path: C:\Program Files (x86)\Symantec\Symantec Endpoint Protection
   
