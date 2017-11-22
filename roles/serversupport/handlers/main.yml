@@ -2,3 +2,6 @@
   win_service:
     name: nxlog
     state: restarted
+
+- name: restart server
+  win_reboot: 

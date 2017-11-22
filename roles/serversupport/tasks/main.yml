@@ -42,4 +42,5 @@
     arguments: /s
     state: present
     creates_path: C:\Program Files (x86)\Symantec\Symantec Endpoint Protection
-  
+  notify: restart server
+
