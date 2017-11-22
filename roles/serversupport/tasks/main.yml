@@ -17,6 +17,6 @@
   win_package:
     path: C:\support\nxlog\nxlog-ce-2.9.1716.msi 
     product_id: nxlog 
-    arguments: /q /l C:\nxlog.txt
+    arguments: /qr
     state: present
   
