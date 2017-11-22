@@ -19,4 +19,5 @@
     product_id: nxlog 
     arguments: /qr
     state: present
+    creates_path: C:\program files (x86)\nxlog
   
