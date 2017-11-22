@@ -11,5 +11,12 @@
     product_id: 7-Zip
     arguments: /q
     state: present
-    creates_path: C:\program files\7-zip\7z.exe 
+    creates_path: C:\program files\7-zip\7z.exe
 
+- name: Install Nxlog
+  win_package:
+    path: C:\support\nxlog\nxlog-ce-2.9.1716.msi 
+    product_id: auto
+    arguments: /qn
+    state: present
+  
