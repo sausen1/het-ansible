@@ -1,0 +1,7 @@
+---
+- name: Test Linux servers
+  hosts: all
+  tasks:
+    - name: ping servers
+      ping:
+        
