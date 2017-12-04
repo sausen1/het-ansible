@@ -1,7 +1,5 @@
 ---
-- name: Test Linux servers
+- name: Configure Linux servers
   hosts: all
-  tasks:
-    - name: ping servers
-      ping:
-        
+  roles:
+    - linuxbuild

@@ -1,0 +1,48 @@
+- name: Add sysadmins group
+  group:
+    name: sysadmins
+    gid: 400
+    state: present
+
+
+- name: Create hetroot
+  user:
+    name: hetroot
+    group: sysadmins
+    state: present
+
+- name: Create snowcmdb
+  user:
+    name: snowcmdb
+    state: present
+
+- name: Add sysadmins to sudoers
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%sysadmins'
+    line: '%sysadmins      ALL=(ALL)       NOPASSWD: ALL'
+
+- name: Add snowcmdb to sudoers
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^snowcmdb'
+    line: 'snowcmdb        ALL=(root)      NOPASSWD: /usr/sbin/dmidecode,/usr/sbin/lsof'
+
+- name: Install SNMP
+  yum:
+    name: net-snmp*
+
+- name: Configure SNMP
+  template:
+    src: templates/snmpd.conf.j2
+    dest: /etc/snmpd/snmpd.conf
+
+- name: Start and enable SNMP
+  service:
+    name: snmpd
+    state: started
+    enabled: yes
+
+       
