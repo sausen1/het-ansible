@@ -37,12 +37,10 @@
 - name: Configure SNMP
   template:
     src: templates/snmpd.conf.j2
-    dest: /etc/snmpd/snmpd.conf
+    dest: /etc/snmp/snmpd.conf
 
 - name: Start and enable SNMP
   service:
     name: snmpd
     state: started
     enabled: yes
-
-       
