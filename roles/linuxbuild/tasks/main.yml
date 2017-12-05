@@ -59,10 +59,10 @@
 - name: Create eVault Web Config
   template:
     src: templates/web-registration.txt.j2
-    dest: /tmp/evault-installer/web-registrations.txt
+    dest: /tmp/Agent-Linux-x64-8.00.6289b/web-registrations.txt
 
 - name: Install eVault
   command: ./install.sh -force-defaults -web-registration=/tmp/evault-installer/web-registrations.txt
   args:
-    chdir: /tmp/evault-installer/
+    chdir: /tmp/Agent-Linux-x64-8.00.6289b
     creates: /opt/BUAgent
