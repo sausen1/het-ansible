@@ -35,7 +35,6 @@
     drive: C
     override: yes
     state: present
-  notify: restart pc
 
 - name: Rename Computer
   win_domain_membership:
@@ -48,11 +47,13 @@
 - name: Reboot
   win_reboot:
 
-- name: Join Computer to domain 
+- name: Join Computer to domain
   win_domain_membership:
     hostname: "{{ inventory_hostname }}"
     state: domain
     dns_domain_name: companynet.org
     domain_admin_user: "{{ domain_admin_user }}"
     domain_admin_password: "{{ domain_admin_password }}"
-  notify: restart pc
+
+- name: Reboot
+  win_reboot:
