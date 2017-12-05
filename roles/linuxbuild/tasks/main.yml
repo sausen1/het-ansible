@@ -52,7 +52,7 @@
 
 - name: Extract the eVault Binary
   unarchive:
-    src: /home/ansadm/Evault-Agent-Linux-x64-8.00.6289b.tar
+    src: /home/ec2-user/Evault-Agent-Linux-x64-8.00.6289b.tar
     dest: /tmp/evault-installer/
 
 - name: Create eVault Web Config
