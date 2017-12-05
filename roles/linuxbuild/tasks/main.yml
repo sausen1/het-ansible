@@ -1,3 +1,9 @@
+- name: Set DNS servers
+  template:
+    src: templates/resolv.conf.j2
+    dest: /etc/resolv.conf
+  when: dns_servers[location] is defined
+  
 - name: Add sysadmins group
   group:
     name: sysadmins
