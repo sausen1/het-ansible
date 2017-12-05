@@ -75,6 +75,11 @@
     dest: /tmp/install_cht_perfmon.sh
   when: "'amazon' in ansible_product_version"
 
+- name: Change install_cht_perfmon.sh permissions
+  file:
+    path: /tmp/install_cht_perfmon.sh
+    mode: 0755
+
 - name: Install Cloud Health BUAgent
   command: ./install_cht_perfmon.sh 14 d0828869031db-431b-b3ff-4b98deb40627 aws
   args:
