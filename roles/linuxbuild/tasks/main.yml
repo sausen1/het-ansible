@@ -73,7 +73,7 @@
     name: wget
     state: installed
   when: "'amazon' in ansible_product_version"
-  
+
 - name: Download Cloud Health BUAgent
   get_url:
     url: https://s3.amazonaws.com/remote-collector/agent/v14/install_cht_perfmon.sh
@@ -82,7 +82,7 @@
   when: "'amazon' in ansible_product_version"
 
 - name: Install Cloud Health BUAgent
-  command: ./install_cht_perfmon.sh 14 d0828869031db-431b-b3ff-4b98deb40627 aws
+  command: ./install_cht_perfmon.sh 14 d0828869-31db-431b-b3ff-4b98deb40627 aws
   args:
     chdir: /tmp
     #creates:
