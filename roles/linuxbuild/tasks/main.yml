@@ -94,5 +94,5 @@
   command: ./install_cht_perfmon.sh 14 d0828869-31db-431b-b3ff-4b98deb40627 aws
   args:
     chdir: /tmp
-    #creates:
+    creates: /opt/cht_perfmon
   when: "'amazon' in ansible_product_version"
