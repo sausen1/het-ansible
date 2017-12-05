@@ -44,3 +44,24 @@
     name: snmpd
     state: started
     enabled: yes
+
+#- name: Download eVault Binary
+#  get_url:
+#    url:
+#    dest:
+
+- name: Extract the eVault Binary
+  unarchive:
+    src: /home/ansadm/Evault-Agent-Linux-x64-8.00.6289b.tar
+    dest: /tmp/evault-installer/
+
+- name: Create eVault Web Config
+  template:
+    src: templates/web-registration.txt.j2
+    dest: /tmp/evault-installer/web-registrations.txt
+
+- name: Install eVault
+  command: ./install.sh -force-defaults -web-registration=/tmp/evault-installer/web-registrations.txt
+  args:
+    chdir: /tmp/evault-installer/
+    creates: /opt/BUAgent
