@@ -1,7 +1,7 @@
 
 - name: Set the Hostname
   hostname:
-    name: "{{ inventory_hostname }}.companynet.org
+    name: "{{ inventory_hostname }}.companynet.org"
 
 - name: Set DNS servers
   template:
