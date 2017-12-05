@@ -4,7 +4,6 @@
     gid: 400
     state: present
 
-
 - name: Create hetroot
   user:
     name: hetroot
@@ -67,21 +66,31 @@
     chdir: /tmp/Agent-Linux-x64-8.00.6289b
     creates: /opt/BUAgent
 
-#- name: Update Sudoers file for root
-- name: Install wget
+#
+# The below only applies to AWS Machines
+#
+- name: AWS - Update Sudoers file for root
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%root '
+    line: '%root          ALL=(ALL) ALL'
+  when: "'amazon' in ansible_product_version"
+
+- name: AWS - Install wget
   yum:
     name: wget
     state: installed
   when: "'amazon' in ansible_product_version"
 
-- name: Download Cloud Health BUAgent
+- name: AWS - Download Cloud Health BUAgent
   get_url:
     url: https://s3.amazonaws.com/remote-collector/agent/v14/install_cht_perfmon.sh
     dest: /tmp/install_cht_perfmon.sh
     mode: 0755
   when: "'amazon' in ansible_product_version"
 
-- name: Install Cloud Health BUAgent
+- name: AWS - Install Cloud Health BUAgent
   command: ./install_cht_perfmon.sh 14 d0828869-31db-431b-b3ff-4b98deb40627 aws
   args:
     chdir: /tmp
