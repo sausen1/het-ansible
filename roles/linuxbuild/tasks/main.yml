@@ -1,12 +1,12 @@
+- name: Set the Hostname
+  hostname:
+    name: "{{ inventory_hostname }}.companynet.org
+
 - name: Set DNS servers
   template:
     src: templates/resolv.conf.j2
     dest: /etc/resolv.conf
   when: dns_servers[location] is defined
-
-- name: Set the Hostname
-  hostname:
-    name: "{{ inventory_hostname }}.companynet.org"
 
 - name: Add sysadmins group
   group:
