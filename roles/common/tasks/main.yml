@@ -5,9 +5,9 @@
 - name: Set DNS servers
   win_dns_client:
     adapter_names: "*"
-    ipv4_addresses: 
+    ipv4_addresses:
       - "{{ dns_servers[location] }}"
-  when: dns_servers[location] is defined  
+  when: dns_servers[location] is defined
 
 - name: Set pagefile size
   win_pagefile:
@@ -25,7 +25,7 @@
 - name: Defrag harddrive
   win_defrag:
     freespace_consolidation: yes
-    parallel: no 
+    parallel: no
     priority: normal
 
 - name: Set pagefile size
@@ -38,11 +38,21 @@
   notify: restart pc
 
 - name: Rename Computer
-  win_domain_membership: 
+  win_domain_membership:
     hostname: "{{ inventory_hostname }}"
-    state: domain 
+    state: workgroup
+    workgroup_name: WORKGROUP
+    domain_admin_user: "{{ domain_admin_user }}"
+    domain_admin_password: "{{ domain_admin_password }}"
+
+- name: Reboot
+  win_reboot:
+
+- name: Join Computer to domain 
+  win_domain_membership:
+    hostname: "{{ inventory_hostname }}"
+    state: domain
     dns_domain_name: companynet.org
     domain_admin_user: "{{ domain_admin_user }}"
     domain_admin_password: "{{ domain_admin_password }}"
   notify: restart pc
-
