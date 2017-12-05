@@ -6,7 +6,7 @@
 
 - name: Set the Hostname
   hostname:
-    name: "{{ inventory_hostname }}"
+    name: "{{ inventory_hostname }}.companynet.org"
 
 - name: Add sysadmins group
   group:
