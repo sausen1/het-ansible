@@ -57,3 +57,7 @@
 
 - name: Reboot
   win_reboot:
+
+- name: Pause for 2 mins
+  pause:
+    minutes: 2
