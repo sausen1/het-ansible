@@ -62,7 +62,7 @@
     dest: /tmp/Agent-Linux-x64-8.00.6289b/web-registrations.txt
 
 - name: Install eVault
-  command: ./install.sh -force-defaults -web-registration=/tmp/evault-installer/web-registrations.txt
+  command: ./install.sh -force-defaults -web-registration=/tmp/Agent-Linux-x64-8.00.6289b/web-registrations.txt
   args:
     chdir: /tmp/Agent-Linux-x64-8.00.6289b
     creates: /opt/BUAgent
