@@ -15,8 +15,8 @@
 
 - name: Install Nxlog
   win_package:
-    path: C:\support\nxlog\nxlog-ce-2.9.1716.msi 
-    product_id: nxlog 
+    path: C:\support\nxlog\nxlog-ce-2.9.1716.msi
+    product_id: nxlog
     arguments: /qr
     state: present
     creates_path: C:\program files (x86)\nxlog
@@ -35,6 +35,14 @@
     state: present
     creates_path: C:\Program Files\EVault Software
 
+- name: Install CloudHealth Agent
+  win_package:
+    path: C:\support\Cloud Health Agent\CloudHealthAgent.exe
+    product_id: auto
+    arguments: /S /v"/l* install.log /qn CLOUDNAME=aws CHTAPIKEY=da1c44be-202d-4bf8-b74f-de7d821dbe65"
+    state: present
+  when: "'amazon' in ansible_product_version"
+  
 - name: Install SEP
   win_package:
     path: C:\support\Sep Server Installs\x64\setup.exe
@@ -43,4 +51,3 @@
     state: present
     creates_path: C:\Program Files (x86)\Symantec\Symantec Endpoint Protection
   notify: restart server
-
