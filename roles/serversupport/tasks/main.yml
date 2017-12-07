@@ -41,6 +41,7 @@
     product_id: auto
     arguments: /S /v"/l* install.log /qn CLOUDNAME=aws CHTAPIKEY=da1c44be-202d-4bf8-b74f-de7d821dbe65"
     state: present
+    creates_path: C:\Program Files (x86)\CloudHealth Technologies\CloudHealth Agent
   when: "'amazon' in ansible_bios_version"
 
 - name: Install SEP
