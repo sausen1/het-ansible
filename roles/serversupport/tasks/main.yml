@@ -41,8 +41,8 @@
     product_id: auto
     arguments: /S /v"/l* install.log /qn CLOUDNAME=aws CHTAPIKEY=da1c44be-202d-4bf8-b74f-de7d821dbe65"
     state: present
-  when: "'amazon' in ansible_product_version"
-  
+  when: "'amazon' in ansible_bios_version"
+
 - name: Install SEP
   win_package:
     path: C:\support\Sep Server Installs\x64\setup.exe
