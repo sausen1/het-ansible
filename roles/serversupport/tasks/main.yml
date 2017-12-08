@@ -1,9 +1,9 @@
-- name: Copy Server Support Directory
-  win_copy:
-    src: \\Sctermsrv01\d$\Server Support-DLM\Support
-    dest: C:\
-    remote_src: yes
-    force: no
+#- name: Copy Server Support Directory
+#  win_copy:
+#    src: \\Sctermsrv01\d$\Server Support-DLM\Support
+#    dest: C:\
+#    remote_src: yes
+#    force: no
 
 - name: Install 7zip
   win_package:
