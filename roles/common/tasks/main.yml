@@ -58,6 +58,6 @@
 - name: Reboot
   win_reboot:
 
-- name: Pause for 2 mins
+- name: Pause for 4 mins
   pause:
-    minutes: 4 
+    minutes: 4
