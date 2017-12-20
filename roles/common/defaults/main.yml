@@ -1,5 +1,5 @@
-dns_servers: 
-  DC4: 
+dns_servers:
+  DC4:
     - 10.72.3.16
     - 10.72.3.17
     - 10.72.3.18
@@ -30,7 +30,7 @@ timezones:
   AWSWest: Pacific Standard Time
   AzureEast: Eastern Standard Time
   AzureWest: Pacific Standard Time
+  AzureUKSouth: Dublin, Edinburgh, Lisbon, London
   IND: Central Standard Time
   NYC: Eastern Standard Time
   HOU: Central Standard Time
-
