@@ -30,8 +30,8 @@
 
 - name: Set pagefile size
   win_pagefile:
-    initial_size: "{{ ansible_memtotal_mb | int * 1.5 }}"
-    maximum_size: "{{ ansible_memtotal_mb | int * 1.5 }}"
+    initial_size: "{{ ansible_memtotal_mb | int * 1.0 }}"
+    maximum_size: "{{ ansible_memtotal_mb | int * 1.0 }}"
     drive: C
     override: yes
     state: present
