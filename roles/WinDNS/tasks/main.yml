@@ -1,0 +1,6 @@
+- name: Set DNS servers
+  win_dns_client:
+    adapter_names: "*"
+    ipv4_addresses:
+      - "{{ dns_servers[location] }}"
+  when: dns_servers[location] is defined
