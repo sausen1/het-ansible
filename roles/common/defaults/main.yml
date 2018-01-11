@@ -30,7 +30,7 @@ timezones:
   AWSWest: Pacific Standard Time
   AzureEast: Eastern Standard Time
   AzureWest: Pacific Standard Time
-  AzureUKSouth: Dublin, Edinburgh, Lisbon, London
+  AzureUKSouth: Pacific Standard Time
   IND: Central Standard Time
   NYC: Eastern Standard Time
   HOU: Central Standard Time
