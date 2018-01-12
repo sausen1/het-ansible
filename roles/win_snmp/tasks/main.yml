@@ -1,9 +1,9 @@
 - name: Check for SNMP
   win_feature:
     name: SNMP-service
+    state: present
     include_sub_features: yes
     include_management_tools: yes
-    state: present
   notify: restart snmp
 
 - name: Add community name
