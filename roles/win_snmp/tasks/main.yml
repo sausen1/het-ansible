@@ -2,10 +2,12 @@
   win_feature:
     name: SNMP-service
     state: present
+    include_sub_features: yes
+    include_management_tools: yes
   notify: restart snmp
 
 - name: Add community name
-  win_regedit: 
+  win_regedit:
     key: HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\ValidCommunities
     name: H3T5nm9R3@d!
     data: 4
@@ -19,7 +21,7 @@
     name: "{{ item.0 }}"
     data: "{{ item.1 }}"
     state: present
-  with_indexed_items: 
+  with_indexed_items:
     - 10.70.0.37
     - 10.72.0.37
     - 10.217.33.29
@@ -29,4 +31,3 @@
     - 10.72.0.94
     - 10.72.0.95
   notify: restart snmp
-
